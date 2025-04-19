@@ -1,4 +1,3 @@
-
 export interface CreateBorrowDTO {
   memberId: string;
   inventoryItemId: string;
@@ -8,9 +7,8 @@ export interface CreateBorrowDTO {
 export interface Borrow {
   id: string;
   memberId: string;
-  inventoryItemId: string;
-  days: number;
-  createdAt: string;
-  returned?: boolean;
+  itemId: string;
+  borrowedDate: string;
+  dueDate: string;
+  returned: boolean;
 }
-

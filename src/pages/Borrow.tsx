@@ -293,8 +293,8 @@ const Borrow = () => {
               <TableRow>
                 <TableHead>Member</TableHead>
                 <TableHead>Item</TableHead>
-                <TableHead>Days</TableHead>
                 <TableHead>Borrowed Date</TableHead>
+                <TableHead>Due Date</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Action</TableHead>
               </TableRow>
@@ -302,7 +302,7 @@ const Borrow = () => {
             <TableBody>
               {borrowings.map((borrow) => {
                 const member = members.find((m) => m.id === borrow.memberId);
-                const item = items.find((i) => i.id === borrow.inventoryItemId);
+                const item = items.find((i) => i.id === borrow.itemId);
 
                 return (
                   <TableRow key={borrow.id}>
@@ -310,8 +310,8 @@ const Borrow = () => {
                       {member ? `${member.firstName} ${member.lastName}` : "Unknown"}
                     </TableCell>
                     <TableCell>{item?.name || "Unknown"}</TableCell>
-                    <TableCell>{borrow.days}</TableCell>
-                    <TableCell>{new Date(borrow.createdAt).toLocaleDateString()}</TableCell>
+                    <TableCell>{new Date(borrow.borrowedDate).toLocaleDateString()}</TableCell>
+                    <TableCell>{new Date(borrow.dueDate).toLocaleDateString()}</TableCell>
                     <TableCell>{borrow.returned ? "Returned" : "Active"}</TableCell>
                     <TableCell>
                       {!borrow.returned && (

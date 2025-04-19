@@ -180,7 +180,7 @@ const Items = () => {
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>{item.serialNumber}</TableCell>
-                <TableCell>{item.unit}</TableCell>
+                <TableCell>{item.unitOfMeasurement}</TableCell>
                 <TableCell>{item.category}</TableCell>
                 <TableCell>{item.borrowable ? "Yes" : "No"}</TableCell>
               </TableRow>

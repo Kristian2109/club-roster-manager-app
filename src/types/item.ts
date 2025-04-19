@@ -1,11 +1,10 @@
-
 export interface Item {
   id: string;
   name: string;
   description: string;
   quantity: number;
   serialNumber: string;
-  unit: string;
+  unitOfMeasurement: string;
   category: string;
   borrowable: boolean;
 }

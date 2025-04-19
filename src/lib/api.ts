@@ -51,6 +51,12 @@ export const itemsApi = {
 };
 
 export const borrowApi = {
+  getAll: async (): Promise<Borrow[]> => {
+    const response = await fetch(`${API_BASE_URL}/api/transactions`);
+    if (!response.ok) throw new Error('Failed to fetch borrowings');
+    return response.json();
+  },
+
   create: async (data: CreateBorrowDTO): Promise<Borrow> => {
     const response = await fetch(`${API_BASE_URL}/api/transactions/borrow`, {
       method: 'POST',
@@ -61,5 +67,12 @@ export const borrowApi = {
     });
     if (!response.ok) throw new Error('Failed to create borrow transaction');
     return response.json();
+  },
+
+  return: async (borrowId: string): Promise<void> => {
+    const response = await fetch(`${API_BASE_URL}/api/transactions/${borrowId}/return`, {
+      method: 'POST',
+    });
+    if (!response.ok) throw new Error('Failed to return item');
   },
 };

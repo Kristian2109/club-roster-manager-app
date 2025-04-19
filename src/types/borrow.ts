@@ -11,4 +11,6 @@ export interface Borrow {
   inventoryItemId: string;
   days: number;
   createdAt: string;
+  returned?: boolean;
 }
+

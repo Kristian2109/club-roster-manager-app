@@ -1,6 +1,7 @@
 
 import { API_BASE_URL } from "@/config/api";
 import { CreateMemberDTO, Member } from "@/types/member";
+import { CreateItemDTO, Item } from "@/types/item";
 
 export const membersApi = {
   getAll: async (): Promise<Member[]> => {
@@ -26,5 +27,25 @@ export const membersApi = {
       method: 'DELETE',
     });
     if (!response.ok) throw new Error('Failed to delete member');
+  },
+};
+
+export const itemsApi = {
+  getAll: async (): Promise<Item[]> => {
+    const response = await fetch(`${API_BASE_URL}/api/items`);
+    if (!response.ok) throw new Error('Failed to fetch items');
+    return response.json();
+  },
+
+  create: async (data: CreateItemDTO): Promise<Item> => {
+    const response = await fetch(`${API_BASE_URL}/api/items`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to create item');
+    return response.json();
   },
 };

@@ -18,6 +18,12 @@ const Index = () => {
           >
             Go to Items →
           </a>
+          <a
+            href="/borrow"
+            className="text-blue-500 hover:text-blue-700 text-lg font-semibold"
+          >
+            Borrow Items →
+          </a>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-
 import { API_BASE_URL } from "@/config/api";
 import { CreateMemberDTO, Member } from "@/types/member";
 import { CreateItemDTO, Item } from "@/types/item";
+import { CreateBorrowDTO, Borrow } from "@/types/borrow";
 
 export const membersApi = {
   getAll: async (): Promise<Member[]> => {
@@ -46,6 +46,20 @@ export const itemsApi = {
       body: JSON.stringify(data),
     });
     if (!response.ok) throw new Error('Failed to create item');
+    return response.json();
+  },
+};
+
+export const borrowApi = {
+  create: async (data: CreateBorrowDTO): Promise<Borrow> => {
+    const response = await fetch(`${API_BASE_URL}/api/transactions/borrow`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to create borrow transaction');
     return response.json();
   },
 };
